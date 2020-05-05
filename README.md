@@ -32,7 +32,7 @@
 Dplayer后端地址形如 https://service-henghenghengaaa-114514.gz.apigw.tencentcs.com/release/danmaku/
 
 ## 花多少钱啊？
-截至目前，腾讯云每月[免费额度](https://cloud.tencent.com/document/product/583/12282)信息如下：
+截至目前，腾讯云每月[免费额度](https://url.cn/5HhTDU9)信息如下：
 |  内存（MB）   | 免费时长（秒）  |
 |  ----  | ----  |
 | 128 |	3,200,000 |
