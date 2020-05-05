@@ -2,6 +2,14 @@
 
 require 'vendor/cos-php-sdk-v5/vendor/autoload.php';
 require 'config.php';
+require 'vendor/tencentcloud-sdk-php/TCloudAutoLoader.php';
+
+use TencentCloud\Common\Credential;
+use TencentCloud\Common\Profile\ClientProfile;
+use TencentCloud\Common\Profile\HttpProfile;
+use TencentCloud\Common\Exception\TencentCloudSDKException;
+use TencentCloud\Cms\V20190321\CmsClient;
+use TencentCloud\Cms\V20190321\Models\TextModerationRequest;
 
 //初始化
 $cosClient = new Qcloud\Cos\Client(array('region' => $region,
@@ -10,7 +18,38 @@ $cosClient = new Qcloud\Cos\Client(array('region' => $region,
         'secretKey' => $secret_key)));
 
 //敏感词
-function aword($str){
+function aword($str, $cms=false){
+    if(!$str){
+        return false;
+    }
+    if($cms){
+        try {
+            $cred = new Credential($secret_id, $secret_key);
+            $httpProfile = new HttpProfile();
+            $httpProfile->setEndpoint("cms.tencentcloudapi.com");
+            
+            $clientProfile = new ClientProfile();
+            $clientProfile->setHttpProfile($httpProfile);
+            $client = new CmsClient($cred, "ap-guangzhou", $clientProfile);
+
+            $req = new TextModerationRequest();
+            
+            $params = json_encode(["Content"=>base64_encode($str)]);
+            // var_dump($params);
+            $req->fromJsonString($params);
+
+
+            $resp = $client->TextModeration($req);
+
+            $result = json_decode($resp->toJsonString());
+            var_dump($result);
+        }
+        catch(TencentCloudSDKException $e) {
+            echo $e;
+        }
+        if($result->Data->EvilFlag)
+            return true;
+    }
     $list = require("aword.php");
     for ($i=0; $i<count($list); $i++ ){  
         $content = substr_count($str, base64_decode($list[$i]));  
@@ -83,8 +122,10 @@ function main_handler($event, $context) {
             $danmakuContent = file_get_contents($danmakuFile);
             var_dump($danmakuContent);
             $key = "tmp/".$body->id.".json";
+            $reqid = (array)$event['headers'];
+            $reqid = $reqid['x-api-requestid'];
             $danmaku = ["code"=>0, "data"=>[[
-                $body->time, $body->type, $body->color, md5(time()), $body->text
+                $body->time, $body->type, $body->color, $reqid, $body->text
             ]]];  //随便生成一个
             if(!$danmakuContent){
                 //创建临时文件
