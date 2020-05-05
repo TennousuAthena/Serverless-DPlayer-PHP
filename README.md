@@ -21,7 +21,7 @@
 ### 0x0002
 在云函数列表新建一个函数，地域建议广东：支持API网关
 ![image.png](https://i.loli.net/2020/05/05/E56lYMm7TdjzSWP.png)
-选择空白函数
+选择空白函数，内存128mb即可
 ![image.png](https://i.loli.net/2020/05/05/w1LdGBkr74ocyfx.png)
 下载一个最新的[Release](https://github.com/qcminecraft/Serverless-DPlayer-PHP/releases)，上传
 ![image.png](https://i.loli.net/2020/05/05/rFQUCxHuEij6ZT5.png)
@@ -30,3 +30,15 @@
 ### 0x0003
 配置danmaku.php中的信息，完成！
 Dplayer后端地址形如 https://service-henghenghengaaa-114514.gz.apigw.tencentcs.com/release/danmaku/
+
+## 花多少钱啊？
+截至目前，腾讯云每月[免费额度](https://cloud.tencent.com/document/product/583/12282)信息如下：
+|  内存（MB）   | 免费时长（秒）  |
+|  ----  | ----  |
+| 128 |	3,200,000 |
+| 256 |	1,600,000 |
+| 512 |	800,000 |
+| 1024 |	400,000 |
+| 1536 |	266,667 |
+| 3072 |	133,333 |
+
