@@ -1,0 +1,18 @@
+Resources:
+  default:
+    Type: TencentCloud::Serverless::Namespace
+    danmaku:
+      Properties:
+        CodeUri: .
+        Description: Dplayer 弹幕后端
+        Environment:
+          Variables: {}
+        Events: {}
+        Handler: danmaku.main_handler
+        MemorySize: 128
+        Runtime: Php7
+        Timeout: 10
+        VpcConfig:
+          SubnetId: ''
+          VpcId: ''
+      Type: TencentCloud::Serverless::Function
