@@ -43,5 +43,4 @@ Dplayer后端地址形如 https://service-henghenghengaaa-114514.gz.apigw.tencen
 | 3072 |	133,333 |
 
 ### 还有问题？
-加入[Telegram群](https://t.me/oi_ez)或联系[我](https://github.com/qcminecraft)
-
+加入[Telegram群](https://t.me/oi_ez)或提交[Issue](https://github.com/qcminecraft/Serverless-DPlayer-PHP/issues)
