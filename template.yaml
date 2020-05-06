@@ -6,7 +6,8 @@ Resources:
         CodeUri: .
         Description: Dplayer 弹幕后端
         Environment:
-          Variables: {}
+          Variables: 
+            CMS: false 
         Events: {}
         Handler: danmaku.main_handler
         MemorySize: 128

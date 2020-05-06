@@ -1,8 +1,8 @@
 <?php
 
-require 'vendor/cos-php-sdk-v5/vendor/autoload.php';
+require '/opt/cos-php-sdk-v5/vendor/autoload.php';
+require '/opt/tencentcloud-sdk-php/TCloudAutoLoader.php';
 require 'config.php';
-require 'vendor/tencentcloud-sdk-php/TCloudAutoLoader.php';
 
 use TencentCloud\Common\Credential;
 use TencentCloud\Common\Profile\ClientProfile;
@@ -18,12 +18,13 @@ $cosClient = new Qcloud\Cos\Client(array('region' => $region,
         'secretKey' => $secret_key)));
 
 //敏感词
-function aword($str, $cms=false){
+function aword($str){
     if(!$str){
         return false;
     }
-    if($cms){
+    if(getenv('CMS')){
         try {
+            echo "CMS Ready \n";
             $cred = new Credential($secret_id, $secret_key);
             $httpProfile = new HttpProfile();
             $httpProfile->setEndpoint("cms.tencentcloudapi.com");

@@ -23,11 +23,17 @@
 ![image.png](https://i.loli.net/2020/05/05/E56lYMm7TdjzSWP.png)
 选择空白函数，内存128mb即可
 ![image.png](https://i.loli.net/2020/05/05/w1LdGBkr74ocyfx.png)
-下载一个最新的[Release](https://github.com/qcminecraft/Serverless-DPlayer-PHP/releases)，上传
+下载一个最新的[Release](https://github.com/qcminecraft/Serverless-DPlayer-PHP/releases)中的layer.zip，新建一个层（名称随意）并上传
+![image.png](https://i.loli.net/2020/05/06/6nxDT5uZQXAgcop.png)
+绑定
+![image.png](https://i.loli.net/2020/05/06/NCBIs927rWh5Vz3.png)
+
+### 0x003
+
 ![image.png](https://i.loli.net/2020/05/05/rFQUCxHuEij6ZT5.png)
 在触发管理中添加一个API网关的触发器
 
-### 0x0003
+### 0x0004
 配置config.php中的信息，完成！
 Dplayer后端地址形如 https://service-henghenghengaaa-114514.gz.apigw.tencentcs.com/release/danmaku/
 
@@ -41,6 +47,9 @@ Dplayer后端地址形如 https://service-henghenghengaaa-114514.gz.apigw.tencen
 | 1024 |	400,000 |
 | 1536 |	266,667 |
 | 3072 |	133,333 |
+
+## 我可以用我自己的服务器吗？
+目前仅支持SCF，请见谅
 
 ### 还有问题？
 加入[Telegram群](https://t.me/oi_ez)或提交[Issue](https://github.com/qcminecraft/Serverless-DPlayer-PHP/issues)
