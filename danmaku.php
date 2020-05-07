@@ -19,12 +19,14 @@ $cosClient = new Qcloud\Cos\Client(array('region' => $region,
 
 //敏感词
 function aword($str){
+    global $appid, $secret_id, $secret_key;
     if(!$str){
         return false;
     }
-    if(getenv('CMS')){
+    if(getenv('CMS') == "true"){
         try {
-            echo "CMS Ready \n";
+            echo "CMS Log: \n";
+            var_dump($secret_id);
             $cred = new Credential($secret_id, $secret_key);
             $httpProfile = new HttpProfile();
             $httpProfile->setEndpoint("cms.tencentcloudapi.com");
@@ -46,6 +48,7 @@ function aword($str){
             var_dump($result);
         }
         catch(TencentCloudSDKException $e) {
+            echo "CMS Error:\n";
             echo $e;
         }
         if($result->Data->EvilFlag)
@@ -63,9 +66,9 @@ function aword($str){
 }
 
 function main_handler($event, $context) {
-    print "start main handler\n";
+    print "Event info:\n";
     print_r($event);
-    global $appid;
+    global $appid, $secret_id, $secret_key;
     global $cosClient;
     global $bucket;
     global $origin;
@@ -91,6 +94,7 @@ function main_handler($event, $context) {
                 $bucket = "danmaku-".$appid; //存储桶名称 格式：BucketName-APPID
                 $result = $cosClient->createBucket(array('Bucket' => $bucket));
                 //请求成功
+                echo "Bucket Create:\n";
                 print_r($result);
             } catch (\Exception $e) {
                 //请求失败
@@ -145,6 +149,7 @@ function main_handler($event, $context) {
                         'Body' => fopen("/".$key, 'rb'), 
                     )); 
                     // 请求成功 
+                    echo "File upload: \n";
                     print_r($result);
                     // $this->versionId = $result['VersionId'];
                     return $danmaku;
@@ -172,7 +177,8 @@ function main_handler($event, $context) {
                         'Key' => "data/".$body->id.".json", 
                         'Body' => fopen("/".$key, 'rb'), 
                     )); 
-                    // 请求成功 
+                    // 请求成功
+                    echo "File upload: \n";
                     print_r($result);
                     return $danmaku;
                 } catch (\Exception $e) {
