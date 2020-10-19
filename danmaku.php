@@ -107,7 +107,8 @@ function main_handler($event, $context) {
     }
     if($event['httpMethod'] == "GET"){
         //读取弹幕
-        $danmakuFile = "https://".$bucket.".cos.ap-chengdu.myqcloud.com/data/".$event['queryStringParameters']->id.".json";
+        $id = $event['queryString']->id;
+        $danmakuFile = "https://".$bucket.".cos.ap-chengdu.myqcloud.com/data/{$id}.json";
         $danmakuContent = file_get_contents($danmakuFile);
         if($danmakuContent){
             return(json_decode($danmakuContent));
