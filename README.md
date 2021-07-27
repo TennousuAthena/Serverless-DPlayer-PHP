@@ -21,13 +21,20 @@
 首先，你需要有一个腾讯云账号 ->[点我注册](https://url.cn/5lgcrXW)
 
 ### 0x0002
-在云函数列表新建一个函数，地域建议广东：支持API网关
+从最新的Release中下载 `Serverless-DPlayer-PHP.zip`
+
+在云函数列表新建一个函数
 ![image.png](https://i.loli.net/2020/05/05/E56lYMm7TdjzSWP.png)
-选择空白函数，内存128mb即可
-![image.png](https://i.loli.net/2020/05/05/w1LdGBkr74ocyfx.png)
+
+自定义创建->事件函数->代码部署->本地上传zip包
+
+![image.png](https://telegra.ph/file/59b365b926705477cd523.png)
+
 下载一个最新的[Release](https://github.com/qcminecraft/Serverless-DPlayer-PHP/releases)中的layer.zip，新建一个层（名称随意）并上传
 ![image.png](https://i.loli.net/2020/05/06/6nxDT5uZQXAgcop.png)
+
 绑定
+
 ![image.png](https://i.loli.net/2020/05/06/NCBIs927rWh5Vz3.png)
 
 ### 0x003
