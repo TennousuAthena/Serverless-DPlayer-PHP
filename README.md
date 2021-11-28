@@ -28,6 +28,8 @@
 
 自定义创建->事件函数->代码部署->本地上传zip包
 
+执行方法为 `danmaku.main_handler`
+
 ![image.png](https://telegra.ph/file/59b365b926705477cd523.png)
 
 下载一个最新的[Release](https://github.com/qcminecraft/Serverless-DPlayer-PHP/releases)中的layer.zip，新建一个层（名称随意）并上传
